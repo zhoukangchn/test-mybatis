@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.aigc.domain.dao.mapper.DomainMapper">
+  <resultMap id="BaseResultMap" type="com.example.aigc.domain.dao.entity.Domain">
+    <result column="id" jdbcType="VARCHAR" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="crate_time" jdbcType="TIMESTAMP" property="crateTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="desc" jdbcType="INTEGER" property="desc" />
+  </resultMap>
+  <insert id="insert" parameterType="com.example.aigc.domain.dao.entity.Domain">
+    insert into t_domain (id, `name`, crate_time, 
+      update_time, user_id, `desc`
+      )
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{crateTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{userId,jdbcType=VARCHAR}, #{desc,jdbcType=INTEGER}
+      )
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, `name`, crate_time, update_time, user_id, `desc`
+    from t_domain
+  </select>
+</mapper>
